@@ -20,17 +20,20 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
+        supportActionBar?.title = "Top 10 Best Books of All Time"
         setContentView(binding.root)
 
         object : CountDownTimer(2000, 1000) {
 
             override fun onTick(millisUntilFinished: Long) {
                 binding.rvSimpleName.visibility = View.GONE
+                binding.progressBar.visibility = View.VISIBLE
 
             }
 
             override fun onFinish() {
                 binding.rvSimpleName.visibility = View.VISIBLE
+                binding.progressBar.visibility = View.GONE
             }
         }.start()
 
