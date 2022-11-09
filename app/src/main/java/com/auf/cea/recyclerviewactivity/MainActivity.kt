@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.title = "Top 10 Best Books of All Time"
         setContentView(binding.root)
 
-        object : CountDownTimer(2000, 1000) {
+        object : CountDownTimer(5000, 1000) {
 
             override fun onTick(millisUntilFinished: Long) {
                 binding.rvSimpleName.visibility = View.GONE
