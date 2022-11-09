@@ -7,14 +7,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.content.res.AppCompatResources.getDrawable
+import androidx.core.content.ContextCompat.getDrawable
+import androidx.core.content.res.ResourcesCompat.getDrawable
 import androidx.recyclerview.widget.RecyclerView
 import com.auf.cea.recyclerviewactivity.DetailsScreenActivity
+import com.auf.cea.recyclerviewactivity.R
 import com.auf.cea.recyclerviewactivity.databinding.ContentMainBinding
 import com.auf.cea.recyclerviewactivity.dialogs.DetailsFragment
 import com.auf.cea.recyclerviewactivity.models.BooksModel
 
 class MainAdapter(private var bookList: ArrayList<BooksModel>, private var context: Context) : RecyclerView.Adapter<MainAdapter.SimpleRVViewHolder>() {
 
+    lateinit var imageId : Array<Int>
 
     inner class SimpleRVViewHolder(val binding: ContentMainBinding): RecyclerView.ViewHolder(binding.root){
         fun bind(binding: ContentMainBinding){
@@ -56,12 +61,15 @@ class MainAdapter(private var bookList: ArrayList<BooksModel>, private var conte
     }
 
     override fun onBindViewHolder(holder: SimpleRVViewHolder, position: Int) {
+
+
         with(holder){
             holder.bind(holder.binding)
             with(bookList[position]){
                 binding.txtName.text = this.name
                 binding.txtAuthorDate.text = String.format("by %s (%s)",this.author,this.datePublished)
                 binding.txtShortDes.text = this.shortDescription
+                binding.imgbook.setImageResource(this.imageID)
             }
         }
     }
